@@ -1,8 +1,11 @@
+<!-- Nærmest alt credit går til Oliver siden jeg har yoinket hans MLP kode,
+da jeg gerne ville selv se om jeg kunne forbedre den, så hvis denne kode er
+ over gennemsnit så pls giv Oliver 12, på forhånd tak! OwO-->
+
 <!DOCTYPE html>
 <html lang="da">
 
 <head>
-
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
@@ -42,7 +45,6 @@
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
-
 </head>
 
 <body>
@@ -111,21 +113,37 @@
       </div>
     </div>
     <div id="page-three">
-      
-      <div class="row">
-        <div class="col s12 m6">
-          <h4>Zieger din teknik homie</h4>
-          <p>zookzook</p>
-          
-              Hej guttermand din ip er = <span id="user_ip"><span class="icon">
-                <i class="loader"></i></span></span>. Som ligger i <span id="user_countrycode">
-                  <span class="icon"><i class="loader"></i></span></span>.
-          
+        <div class="row">
+          <div class="col s12 m6">
+              <h4>Zieger din teknik homie</h4>
+              <p>zookzook</p>
+              
+                  Hej guttermand din ip er = <span id="user_ip"><span class="icon">
+                    <i class="loader"></i></span></span>. Som ligger i <span id="user_countrycode">
+                      <span class="icon"><i class="loader"></i></span></span>.
+            
+            <h4>Ækle billeder fra internettet</h4>
+  
+          </div>
+  
+        </div>
+  
+  
+  
+        <div class="row">
+          <div class="col s12 m3">
+            <a class="waves-effect waves-red btn-large" onclick="Dansgame()">
+            <i class="material-icons right">accessible_forward</i>Porno?</a>
+
+
+                  <a class="waves-effect waves-light btn-large" onclick="ApiGo()">
+              <i class="material-icons right">accessible</i>Fremkald</a>
+          </div>
+        </div>
+        <div id="api-component-page-four"> </div>
+        <div id="api-component-page-four"></div>
         </div>
       </div>
-      <div id="api-osu"></div>
-    </div>
-
   </div>
 
 
@@ -200,45 +218,94 @@
 </script>
 <script async src="https://get.geojs.io/v1/ip/geo.js"></script>
 <!-- Osu! api, prøver bare rundt er ikke sikker på om jeg kan-->
-<script id="api-osu" type="text/x-handlebars-template">
+<!-- Oliver's mlp API som jeg vil prøve at forbedre-->
+<script id="api-card-template-four" type="text/x-handlebars-template">
   <div class="row">
-      <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-          <div class="card-content white-text">
-            <span class="card-title">{{API}}</span>
+      <div class="col s12 m7">
+        <div class="card">
+          <div class="card-image">
+            <img src='{{image}}'>
+            <span class="card-title"></span>
+          </div>
+          <div class="card-content">
             <p>
-              sang: {{title}}
-              af: {{artist}}
-              <ul>
-                  <li>Ranked?!?: {{approved}}</li>
-                <li>Sværhedsgrad: {{difficultyrating}}</li>
-                <li>Længde af sangen: {{hit_length}}</li>
-                <li>Hvilken gamemode wallah?: {{mode}}</li>
-                <li>Mængde af notes(med slider): {{max_combo}}</li>
-              </ul>
-            </p>
+              upvotes: {{score}}
+            <br>
+          Uploadet af {{uploader}}
+          <br>
+          Uploadet: {{created_at}}
+          <br>
+          Virker ikke når billedet er blacklistet, pga tags, dette er den eneste bug jeg kender.
+          </p>
           </div>
           <div class="card-action">
-            <a href="{{https://osu.ppy.sh/beatmapsets/{{beatmapset_id}}#{{mode}}/{{beatmap_id}}}}">download sangen</a>
+            Original taget <a href="{{image}}">her</a>
           </div>
         </div>
-    </div>
-  </div>
+      </div>
+    </div> 
 </script>
-
-
-
 <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
     // Setup handlebars for first API card
+
+var porno=-1;
     var apiSource = $("#api-card-template").html();
     var apiTemplate = Handlebars.compile(apiSource);
+//Pog?!?!??
 
     // Setup handlebars for second API card
     var apiSourceTwo = $("#api-card-template-two").html();
     var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
-
+//MLP API handlebar
+var apiSourceThree = $("#api-card-template-four").html();
+      var apiTemplateThree = Handlebars.compile(apiSourceThree);
+      //Funktion fordi at det her er et dårligt system hvor man ikke må gøre hvad man vil
+      //Tilfældigt tal
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+      function Dansgame(){
+        porno=porno*-1;
+      if (porno==1){
+        alert("Tænk nu over hvad du skal til at gøre min ven, det er et slemt sted. jeg fortryder en del at jeg har lavet det her, men jeg har puttet så meget effort ind i det at jeg ikke har lyst til at dræbe min skabning.");
+      } else {
+        alert("Godt valg skipper");
+      }
+      }
+      function ApiGo() {
+        console.log(porno);
+        $.ajax({
+          url: "https://derpibooru.org/" + getRandomInt(0, 99999) + ".json",
+        }).done(function (data) {
+          console.log(data);
+          console.log(data.tags);
+          var banned = ['suggestive', 'explicit', 'fetish', 'nudity', 'nipples',
+            'porn'];
+          var shitsbanned;
+          banned.forEach(ban => {
+            if (data.tags.includes(ban)) {
+              shitsbanned = true;
+            }
+          });
+          if (porno==1){
+            if (shitsbanned)
+            $('#api-component-page-four').html(apiTemplateThree(data));
+         else {
+            ApiGo();
+          }
+          } else
+          if (!shitsbanned)
+            $('#api-component-page-four').html(apiTemplateThree(data));
+         else {
+            ApiGo();
+          }
+          
+        });
+      }
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
     function getApiData(someparam) {
       $.ajax({
