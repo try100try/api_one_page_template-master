@@ -51,17 +51,16 @@ da jeg gerne ville selv se om jeg kunne forbedre den, så hvis denne kode er
 
   <!-- Primary Page Layout - this is the "hierarchy" of the page
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container" style="margin-top: 3%">
+  <div class="container" style="margin-top: 1%">
 
     <div class="row">
       <div class="col s12 m6">
         <nav>
-          <div class="nav-wrapper">
+          <div class="">
             <ul id="nav-mobile" class="left">
-              <li id="menu-page-one"><a href="#">Page 1</a></li>
-              <li id="menu-page-two"><a href="#">Page 2</a></li>
-              <li id="menu-page-three"><a href="#">honkhonk</a></li>
-            </ul>
+              <li id="menu-page-one"><a href="#">/Simmoe-1</a></li>
+              <li id="menu-page-two"><a href="#">/Simmoe-2</a></li>
+              <li id="menu-page-three"><a href="#">Pls dont</a></li>            </ul>
           </div>
         </nav>
       </div>
@@ -121,17 +120,21 @@ da jeg gerne ville selv se om jeg kunne forbedre den, så hvis denne kode er
                   Hej guttermand din ip er = <span id="user_ip"><span class="icon">
                     <i class="loader"></i></span></span>. Som ligger i <span id="user_countrycode">
                       <span class="icon"><i class="loader"></i></span></span>.
-            
+                      <h4>Mine fejlede forsøg:</h4>
+                      <p>1. Osu!_api - 2. Spotify_api - 3. Age_of_empires_api
+                      </p>
+                      <!--
             <h4>Ækle billeder fra internettet</h4>
-  
+            <p>Jeg bebrejder Oliver for denne monstrositet, ved at foreslå hvad jeg skulle lave.</p>
+            <p>Må gud være med os, dog burde du uironisk ignorerer denne</p>
           </div>
   
         </div>
-  
+      
   
   
         <div class="row">
-          <div class="col s12 m3">
+          <div class="col s12 m6">
             <a class="waves-effect waves-red btn-large" onclick="Dansgame()">
             <i class="material-icons right">accessible_forward</i>Porno?</a>
 
@@ -145,7 +148,7 @@ da jeg gerne ville selv se om jeg kunne forbedre den, så hvis denne kode er
         </div>
       </div>
   </div>
-
+-->
 
   <!-- End Document body
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -217,8 +220,9 @@ da jeg gerne ville selv se om jeg kunne forbedre den, så hvis denne kode er
   }
 </script>
 <script async src="https://get.geojs.io/v1/ip/geo.js"></script>
-<!-- Osu! api, prøver bare rundt er ikke sikker på om jeg kan-->
-<!-- Oliver's mlp API som jeg vil prøve at forbedre-->
+<!-- Forsøg på en insult API-->
+<script></script>
+<!-- Oliver's mlp API som jeg vil prøve at forbedre -->
 <script id="api-card-template-four" type="text/x-handlebars-template">
   <div class="row">
       <div class="col s12 m7">
@@ -249,7 +253,6 @@ da jeg gerne ville selv se om jeg kunne forbedre den, så hvis denne kode er
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
     // Setup handlebars for first API card
-
 var porno=-1;
     var apiSource = $("#api-card-template").html();
     var apiTemplate = Handlebars.compile(apiSource);
@@ -269,7 +272,7 @@ var apiSourceThree = $("#api-card-template-four").html();
         return Math.floor(Math.random() * (max - min)) + min;
       }
       function Dansgame(){
-        porno=porno*-1;
+        porno=porno*1;
       if (porno==1){
         alert("Tænk nu over hvad du skal til at gøre min ven, det er et slemt sted. jeg fortryder en del at jeg har lavet det her, men jeg har puttet så meget effort ind i det at jeg ikke har lyst til at dræbe min skabning.");
       } else {
@@ -337,17 +340,20 @@ var apiSourceThree = $("#api-card-template-four").html();
       $('#page-one').show();
       $('#page-two').hide();
       $('#page-three').hide();
+
     });
     //When someone clicks the page two navigation link
     $('#menu-page-two').click(function () {
       $('#page-one').hide();
       $('#page-two').show();
       $('#page-three').hide();
+
     });
     $('#menu-page-three').click(function () {
       $('#page-one').hide();
       $('#page-two').hide();
       $('#page-three').show();
+
     });
   </script>
 
